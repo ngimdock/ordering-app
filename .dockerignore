@@ -1,0 +1,21 @@
+
+# Versionning and metadata
+.git
+.gitignore
+.dockerignore
+
+# Build and dependencies
+dist
+node_modules
+
+# Enviroment variables
+.env
+
+# Misc
+.eslintrc.js
+.prettierrc
+
+# IDE and editor files
+.vscode/
+.idea/
+README.md

@@ -1,11 +1,10 @@
 import { Logger, NotFoundException } from '@nestjs/common';
 import { AbtractDocument } from './abstract.schema';
-import mongoose, {
+import {
   Connection,
   FilterQuery,
   Model,
   SaveOptions,
-  Types,
   UpdateQuery,
 } from 'mongoose';
 

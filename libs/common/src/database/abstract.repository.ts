@@ -1,6 +1,6 @@
 import { Logger, NotFoundException } from '@nestjs/common';
 import { AbtractDocument } from './abstract.schema';
-import {
+import mongoose, {
   Connection,
   FilterQuery,
   Model,
@@ -23,7 +23,6 @@ export abstract class AbstractRepository<TDocument extends AbtractDocument> {
   ): Promise<TDocument> {
     const createdDocument = new this.model({
       ...document,
-      _id: Types.ObjectId,
     });
 
     return (

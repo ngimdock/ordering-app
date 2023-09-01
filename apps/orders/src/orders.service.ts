@@ -34,4 +34,8 @@ export class OrdersService {
   getOrders() {
     return this.orderRepository.find({});
   }
+
+  async deleteOrder(orderId: string) {
+    return this.orderRepository.delete(orderId);
+  }
 }

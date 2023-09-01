@@ -72,6 +72,10 @@ export abstract class AbstractRepository<TDocument extends AbtractDocument> {
     });
   }
 
+  async delete(id: string): Promise<void> {
+    await this.model.deleteOne({ _id: id });
+  }
+
   async startTransaction() {
     const session = await this.connection.startSession();
     session.startTransaction();

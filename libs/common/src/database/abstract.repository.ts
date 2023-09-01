@@ -17,7 +17,7 @@ export abstract class AbstractRepository<TDocument extends AbtractDocument> {
   ) {}
 
   async create(
-    document: Omit<TDocument, '_id'>,
+    document: Omit<TDocument, 'id'>,
     options?: SaveOptions,
   ): Promise<TDocument> {
     const createdDocument = new this.model({

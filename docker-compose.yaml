@@ -11,6 +11,8 @@ services:
       - mongodb-primary
       - mongodb-secondary
       - mongodb-arbiter
+      - rabbitmq
+      - auth
       - billing
     volumes:
       - .:/usr/src/app
@@ -31,9 +33,29 @@ services:
       - mongodb-secondary
       - mongodb-arbiter
       - rabbitmq
+      - auth
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
+    depends_on:
+      - mongodb-primary
+      - mongodb-secondary
+      - mongodb-arbiter
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3001:3001'
 
   rabbitmq:
     image: rabbitmq

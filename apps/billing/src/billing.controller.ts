@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { BillingService } from './billing.service';
-import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
+import { EventPattern, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class BillingController {

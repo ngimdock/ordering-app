@@ -20,8 +20,6 @@ export class RmqModule {
           {
             name,
             useFactory: (configService: ConfigService) => {
-              console.log({ urll: configService.get<string>('RABBIT_MQ_URI') });
-
               return {
                 transport: Transport.RMQ,
                 options: {

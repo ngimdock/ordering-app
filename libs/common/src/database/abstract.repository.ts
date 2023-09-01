@@ -7,7 +7,7 @@ import {
   SaveOptions,
   UpdateQuery,
 } from 'mongoose';
-
+import { randomUUID } from 'crypto';
 export abstract class AbstractRepository<TDocument extends AbtractDocument> {
   protected readonly logger: Logger;
 
@@ -21,6 +21,7 @@ export abstract class AbstractRepository<TDocument extends AbtractDocument> {
     options?: SaveOptions,
   ): Promise<TDocument> {
     const createdDocument = new this.model({
+      id: randomUUID(),
       ...document,
     });
 

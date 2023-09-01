@@ -5,4 +5,7 @@ import { SchemaTypes, Types } from 'mongoose';
 export class AbtractDocument {
   // @Prop({ type: SchemaTypes.ObjectId })
   // _id: Types.ObjectId;
+
+  @Prop()
+  id: string;
 }

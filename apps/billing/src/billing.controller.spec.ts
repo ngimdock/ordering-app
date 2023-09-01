@@ -14,9 +14,9 @@ describe('BillingController', () => {
     billingController = app.get<BillingController>(BillingController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(billingController.getHello()).toBe('Hello World!');
-    });
-  });
+  // describe('root', () => {
+  //   it('should return "Hello World!"', () => {
+  //     expect(billingController.getHello()).toBe('Hello World!');
+  //   });
+  // });
 });

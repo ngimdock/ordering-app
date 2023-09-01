@@ -5,10 +5,6 @@ export class BillingService {
   private logger = new Logger(BillingService.name);
 
   bill(data: any) {
-    this.logger.debug('Billing...', data);
-  }
-
-  getHello(): string {
-    return 'Hello World!';
+    this.logger.debug('Billing...', { data });
   }
 }

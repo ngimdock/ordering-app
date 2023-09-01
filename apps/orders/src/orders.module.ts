@@ -3,7 +3,7 @@ import { OrdersController } from './orders.controller';
 import { OrdersService } from './orders.service';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-import { DatabaseModule, RmqModule } from '@app/common';
+import { AuthModule, DatabaseModule, RmqModule } from '@app/common';
 import { OrderRepository } from './order.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Order, OrderSchema } from './schemas/order.schema';
@@ -16,6 +16,9 @@ import { BILLING_SERVIVE } from './constants/services';
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
         PORT: Joi.number().required(),
+        RABBIT_MQ_URI: Joi.string().required(),
+        RABBIT_MQ_BILLING_QUEUE: Joi.string().required(),
+        RABBIT_MQ_AUTH_QUEUE: Joi.string().required(),
       }),
       envFilePath: '/apps/orders/.env',
     }),
@@ -24,6 +27,7 @@ import { BILLING_SERVIVE } from './constants/services';
     RmqModule.register({
       name: BILLING_SERVIVE,
     }),
+    AuthModule,
   ],
   controllers: [OrdersController],
   providers: [OrdersService, OrderRepository],

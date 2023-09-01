@@ -22,8 +22,8 @@ export class JwtAuthGuard implements CanActivate {
         Authentication: authentication,
       })
       .pipe(
-        tap((res) => {
-          this.addUser(res, context);
+        tap((user) => {
+          this.addUser(user, context);
         }),
         catchError(() => {
           throw new UnauthorizedException('User not added to the request.');

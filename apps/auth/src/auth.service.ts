@@ -16,8 +16,12 @@ export class AuthService {
   ) {}
 
   async login(user: User, response: Response) {
+    // const tokenPayload: TokenPayload = {
+    //   userId: user._id.toHexString(),
+    // };
+
     const tokenPayload: TokenPayload = {
-      userId: user.id, // i use uudi instead of _id
+      userId: user.id,
     };
 
     const expires = new Date();
